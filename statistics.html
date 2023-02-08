@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Tam Pham" />
+    <title>Statistics</title>
+    <style>
+        input:invalid:focus {
+            background-color: red;
+        }
+    </style>
+    <script src="statistics.js"></script>
+
+</head>
+<body>
+    <h1>Statistics Calculator</h1>
+    <h3>Enter a list of numbers seperated by spaces</h3>
+<form id="myForm">
+    <label for="numberList">Number List</label>
+    <input 
+    id="numberList"
+    type="text"
+    required
+    />
+</form>
+<br />
+<input  id="mean" type="button" value="mean" form="myForm" onclick="meanCalc()"/>
+<p id="meanResult"></p>
+<br />
+<input id="variance" type="button" value="variance" form="myForm" onclick="varianceCalc()"/>
+<p id="varianceResult"></p>
+<br />
+<input id="std" type="button" value="standard deviation" form="myForm" onclick="stdDevCalc()"/>
+<p id="stdResult"></p>
+
+</body>
+</html>
