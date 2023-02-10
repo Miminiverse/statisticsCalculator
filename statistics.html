@@ -6,8 +6,12 @@
     <meta name="author" content="Tam Pham" />
     <title>Statistics</title>
     <style>
-        input:invalid:focus {
-            background-color: red;
+        input:valid {
+            border-color: black;
+            background-color: palegreen;
+        }
+        input:invalid {
+            background-color: lightpink;
         }
     </style>
     <script src="statistics.js"></script>
@@ -16,22 +20,25 @@
 <body>
     <h1>Statistics Calculator</h1>
     <h3>Enter a list of numbers seperated by spaces</h3>
-<form id="myForm">
+<form id="myForm" name="form">
     <label for="numberList">Number List</label>
     <input 
     id="numberList"
     type="text"
+    pattern="^(\s*(\d+(\.\d+)?)\s*)+$"
+    onclick="clearInput()"
+    onkeypress="onChange()"
     required
     />
 </form>
 <br />
-<input  id="mean" type="button" value="mean" form="myForm" onclick="meanCalc()"/>
+<input id="mean" type="button" value="mean" form="myForm" onclick="meanCalc()" disabled />
 <p id="meanResult"></p>
 <br />
-<input id="variance" type="button" value="variance" form="myForm" onclick="varianceCalc()"/>
+<input id="variance" type="button" value="variance" form="myForm" onclick="varianceCalc()" disabled/>
 <p id="varianceResult"></p>
 <br />
-<input id="std" type="button" value="standard deviation" form="myForm" onclick="stdDevCalc()"/>
+<input id="std" type="button" value="standard deviation" form="myForm" onclick="stdDevCalc()" disabled/>
 <p id="stdResult"></p>
 
 </body>

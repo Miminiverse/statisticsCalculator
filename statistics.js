@@ -1,8 +1,6 @@
-
-
 function meanCalculation () {
-    var number = document.getElementById("numberList")
-    var arrayString = number.value.split(" ");
+    var number = document.getElementById("numberList");
+    var arrayString = number.value.trim().split(" ");
     var arrayNumber = arrayString.map(Number);
     var sum = arrayNumber.reduce(function(a,b) {
         return a + b
@@ -15,9 +13,11 @@ function meanCalculation () {
 function meanCalc () {
     var meanVal = meanCalculation()
     var mean = meanVal.mean
-    document.getElementById("meanResult").innerHTML = mean 
-}
+    var arrayNumber = meanVal.arrayNumber
 
+    document.getElementById("meanResult").innerHTML = mean 
+
+}
 
 function varianceCalculation () {
     var value = meanCalculation()
@@ -30,19 +30,43 @@ function varianceCalculation () {
         return c+d
     })
     var variance = sumDif / arrayLength
-    return variance
+    return { variance: variance, arrayNumber: arrayNumber}
 }
 
+// The formula for variance for a population
 function varianceCalc (){
-    var variance = varianceCalculation ()
+    var varianceVal = varianceCalculation ()
+    var variance = varianceVal.variance
+    var arrayNumber = varianceVal.arrayNumber
+
     document.getElementById("varianceResult").innerHTML = variance
+
 }
 
-
+// The formula for Standard Deviation for a population
 function stdDevCalc () {
-    var variance = varianceCalculation()
+    var varianceVal = varianceCalculation ()
+    var variance = varianceVal.variance
+    var arrayNumber = varianceVal.arrayNumber
     stdDev = Math.sqrt(variance)
+
     document.getElementById("stdResult").innerHTML = stdDev
+
 }
 
+function clearInput () {
+    document.getElementById('numberList').value = ""
+    document.getElementById('meanResult').innerHTML = ""
+    document.getElementById('varianceResult').innerHTML = ""
+    document.getElementById('stdResult').innerHTML = ""
+    document.getElementById('mean').disabled = true
+    document.getElementById('variance').disabled = true
+    document.getElementById('std').disabled = true
+}
+
+function onChange () {
+    document.getElementById('mean').disabled = false
+    document.getElementById('variance').disabled = false
+    document.getElementById('std').disabled = false
+}
 
